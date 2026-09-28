@@ -18,7 +18,7 @@ from django.contrib.auth.decorators import user_passes_test
 
 
 def index(request):
-    return render(request, 'TiendaApp/index.html')
+    return render(request, 'tiendaApp/index.html')
 
 
 
@@ -27,7 +27,7 @@ def index(request):
 
     productos = Producto.objects.all()[:8]
 
-    return render(request, 'TiendaApp/index.html', {
+    return render(request, 'tiendaApp/index.html', {
         'productos': productos
     })
 
@@ -43,7 +43,7 @@ def productos(request):
             nombre__icontains=buscar
         )
 
-    return render(request, 'TiendaApp/productos.html', {
+    return render(request, 'tiendaApp/productos.html', {
         'productos': productos
     })
 
@@ -59,7 +59,7 @@ def detalle_producto(request, slug):
     )[:4]
 
     return render(request,
-        'TiendaApp/detalle_producto.html',
+        'tiendaApp/detalle_producto.html',
         {
             'producto': producto,
             'relacionados': relacionados
@@ -113,7 +113,7 @@ def limpiar_carrito(request):
 def carrito(request):
 
     return render(request,
-        'TiendaApp/carrito.html'
+        'tiendaApp/carrito.html'
     )
 
 #formilario de registro 
@@ -136,7 +136,7 @@ def registro(request):
         form = RegistroUsuarioForm()
 
     return render(request,
-        'TiendaApp/registro.html',
+        'tiendaApp/registro.html',
         {
             'form': form
         }
@@ -174,7 +174,7 @@ def iniciar_sesion(request):
         form = AuthenticationForm()
 
     return render(request,
-        'TiendaApp/login.html',
+        'tiendaApp/login.html',
         {
             'form': form
         }
@@ -270,14 +270,14 @@ def checkout(request):
         numero_whatsapp = "573136202509"
         whatsapp_url = f"https://wa.me/{numero_whatsapp}?text={mensaje}"
 
-        return render(request, 'TiendaApp/checkout.html', {
+        return render(request, 'tiendaApp/checkout.html', {
             'mostrar_pago': True,
             'total': f"{total:,.0f}",
             'pedido_id': pedido.id,
             'whatsapp_url': whatsapp_url,
         })
 
-    return render(request, 'TiendaApp/checkout.html', {
+    return render(request, 'tiendaApp/checkout.html', {
         'mostrar_pago': False,
     })
 
@@ -320,7 +320,7 @@ def dashboard(request):
 
     return render(
         request,
-        'TiendaApp/dashboard.html',
+        'tiendaApp/dashboard.html',
         contexto
     )
 
@@ -371,7 +371,7 @@ def mis_pedidos(request):
 
     return render(
         request,
-        'TiendaApp/mis_pedidos.html',
+        'tiendaApp/mis_pedidos.html',
         {
             'pedidos': pedidos
         }
@@ -392,7 +392,7 @@ def detalle_pedido(request, pedido_id):
 
     return render(
         request,
-        'TiendaApp/detalle_pedido.html',
+        'tiendaApp/detalle_pedido.html',
         {
             'pedido': pedido,
             'detalles': detalles
@@ -419,4 +419,4 @@ def crear_producto(request):
 
         return redirect('/dashboard/#productos')
 
-    return render(request, 'TiendaApp/crear_producto.html')
+    return render(request, 'tiendaApp/crear_producto.html')
