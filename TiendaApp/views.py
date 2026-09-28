@@ -22,13 +22,6 @@ def index(request):
 
 
 
-def index(request):
-
-    productos = Producto.objects.all()[:6]
-
-    return render(request, 'TiendaApp/index.html', {
-        'productos': productos
-    })
 
 def index(request):
 
